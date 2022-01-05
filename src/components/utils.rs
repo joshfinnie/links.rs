@@ -21,6 +21,8 @@ pub fn container(props: &Props) -> Html {
                         align-items: center;
                         min-height: 100vh;
                         flex-direction: column;
+                        color: white;
+                        background-color: #292929;
                     }
                 "#
             )} />

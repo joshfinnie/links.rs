@@ -16,3 +16,5 @@ url="https://instagram.com/joshfinnie"
 url="https://linkedin.com/in/joshfinnie"
 [social.twitch]
 url="https://twitch.tv/joshfinnie"
+[social.documentation]
+url="https://github.com/joshfinnie/links.rs"

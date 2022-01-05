@@ -16,7 +16,7 @@ pub fn social_button(props: &Props) -> Html {
         "linkedin" => "#0077B5",
         "instagram" => "#E1306C",
         "twitch" => "#9146FF",
-        _ => "#FCFCFC",
+        _ => "#000000",
     };
 
     html! {
@@ -34,6 +34,7 @@ pub fn social_button(props: &Props) -> Html {
                         text-align: center;
                         text-transform: capitalize;
                         border-radius: .5rem;
+                        border-color: black;
                         background-color: ${bg};
                         color: white;
                     "#,
