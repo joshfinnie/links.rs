@@ -10,9 +10,18 @@ pub struct Props {
 #[styled_component(SocialButton)]
 pub fn social_button(props: &Props) -> Html {
     let ch = props.channel.to_owned();
+    let color = match &ch as &str {
+        "twitter" => "#1DA1F2",
+        "github" => "#181717",
+        "linkedin" => "#0077B5",
+        "instagram" => "#E1306C",
+        "twitch" => "#9146FF",
+        _ => "#FCFCFC",
+    };
+
     html! {
         <div>
-            <a href={ props.url.to_owned() } target="_blank">
+            <a href={ props.url.to_owned() } target="_blank" class={css!("text-decoration: none;")}>
                 <button class={css!(
                     r#"
                         margin-top: .5rem;
@@ -24,7 +33,11 @@ pub fn social_button(props: &Props) -> Html {
                         cursor: pointer;
                         text-align: center;
                         text-transform: capitalize;
-                    "#
+                        border-radius: .5rem;
+                        background-color: ${bg};
+                        color: white;
+                    "#,
+                    bg = color
                 )}>
                     { ch }
                 </button>

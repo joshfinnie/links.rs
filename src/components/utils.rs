@@ -1,5 +1,5 @@
 use yew::prelude::*;
-use stylist::yew::styled_component;
+use stylist::yew::{styled_component, Global};
 
 #[derive(PartialEq, Properties)]
 pub struct Props {
@@ -9,17 +9,32 @@ pub struct Props {
 #[styled_component(Container)]
 pub fn container(props: &Props) -> Html {
     html! {
-        <div class={css!(
-            r#"
-                margin-top: 2.5rem;
-                margin-left: auto;
-                margin-right: auto;
-                width: 250px;
-                z-index: 2;
-            "#
-        )}>
-            { props.children.clone() }
-        </div>
+        <>
+            <Global css={css!(
+                r#"
+                    html, body {
+                        font-family: IBM Plex Sans,ui-sans-serif,system-ui,sans-serif;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-height: 100vh;
+                        flex-direction: column;
+                    }
+                "#
+            )} />
+            <div class={css!(
+                r#"
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 250px;
+                    z-index: 2;
+                "#
+            )}>
+                { props.children.clone() }
+            </div>
+        </>
     }
 }
 
