@@ -1,4 +1,6 @@
 use yew::prelude::*;
+use stylist::yew::styled_component;
+
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
@@ -6,23 +8,23 @@ pub struct Props {
     pub alt: String,
 }
 
-pub struct Avatar {}
-
-impl Component for Avatar {
-    type Message = ();
-    type Properties = Props;
-
-    fn create(_: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        html! {
-            <img
-                class="rounded-full max-h-20 max-w-20"
-                src={ctx.props().src.to_owned()}
-                alt={ctx.props().alt.to_owned()}
-            />
-        }
+#[styled_component(Avatar)]
+pub fn avatar(props: &Props) -> Html {
+    html! {
+        <img
+            class={css!(
+                r#"
+                    color: white;
+                    border-radius: 50%;
+                    border: none;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;
+                "#
+            )}
+            src={props.src.to_owned()}
+            alt={props.alt.to_owned()}
+        />
     }
 }

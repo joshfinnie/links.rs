@@ -1,0 +1,16 @@
+[bio]
+name="Josh Finnie"
+avatar="https://avatars.githubusercontent.com/u/125098"
+avatar_alt="Josh Finnie's Avatar"
+byline="Polyglot programmer working hard on learning Rust!"
+footer="© 2022 - Josh Finnie"
+
+[social]
+[social.twitter]
+url="https://twitter.com/joshfinnie"
+[social.github]
+url="https://github.com/joshfinnie"
+[social.instagram]
+url="https://instagram.com/joshfinnie"
+[social.linkedin]
+url="https://linkedin.com/in/joshfinnie"

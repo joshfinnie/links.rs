@@ -1,86 +1,78 @@
-use yew_router::prelude::*;
+use std::collections::HashMap;
+
+use log;
+use serde_derive::Deserialize;
+use toml;
+use wasm_logger;
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 pub mod components;
-use crate::components::{avatar::Avatar};
+use crate::components::{
+    avatar::Avatar,
+    button::SocialButton,
+    header::Header,
+    utils::{Container, FourOhFour},
+};
 
-struct Container {}
+const DATA: &str = include_str!("../.config.toml");
 
-#[derive(PartialEq, Properties)]
-struct ContainerProps {
-    children: Children,
+#[derive(Deserialize)]
+struct Bio {
+    name: String,
+    avatar: String,
+    avatar_alt: String,
+    byline: String,
+    footer: String,
 }
 
-impl Component for Container {
-    type Message = ();
-    type Properties = ContainerProps;
-
-    fn create(_ctx: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        html! {
-            <div class="container mx-auto my-10">
-                <Avatar 
-                    src="https://avatars.githubusercontent.com/u/125098"
-                    alt="Josh Finnie's Avatar"
-                />
-                { ctx.props().children.clone() }
-            </div>
-        }
-    }
+#[derive(Debug, Deserialize)]
+struct SocialEntity {
+    url: String,
 }
 
-struct Home {}
+#[derive(Deserialize)]
+struct Config {
+    bio: Bio,
+    social: HashMap<String, SocialEntity>,
+}
 
-impl Component for Home {
-    type Message = ();
-    type Properties = ();
-
-    fn create(_: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, _: &Context<Self>) -> Html {
-        let props = yew::props!(Container::Properties {
-            children: Children::default(),
-        });
-
-        html! {
-            <Container ..props>
-                <h1 class="font-bold text-3xl text-center pb-3">
-                    { "Home" }
-                </h1>
-                <p>{ "This is the home page!" }</p>
-            </Container>
-        }
+impl Default for Config {
+    fn default() -> Self {
+        toml::from_str(DATA).unwrap()
     }
 }
 
-struct FourOhFour {}
+#[function_component(Home)]
+pub fn home() -> Html {
+    let props = yew::props!(Container::Properties {
+        children: Children::default(),
+    });
 
-impl Component for FourOhFour {
-    type Message = ();
-    type Properties = ();
+    let conf = Config::default();
 
-    fn create(_: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, _: &Context<Self>) -> Html {
-        let props = yew::props!(Container::Properties {
-            children: Children::default(),
-        });
-
-        html! {
-            <Container ..props>
-                <h1 class="font-bold text-3xl text-center pb-3">
-                    { "404" }
-                </h1>
-                <p>{ "Something went wrong! We could not find the page you are looking for..." }</p>
-            </Container>
-        }
+    html! {
+        <Container ..props>
+            <Avatar
+                src={ conf.bio.avatar }
+                alt={ conf.bio.avatar_alt }
+            />
+            <Header
+                name={ conf.bio.name }
+                byline={ conf.bio.byline }
+            />
+            {
+                conf.social.into_iter().map(|(key, s)| {
+                    html! {
+                        <SocialButton
+                            channel={ key }
+                            url={ s.url }
+                        />
+                    }
+                }).collect::<Html>()
+            }
+            <p>{ conf.bio.footer }</p>
+        </Container>
     }
 }
 
@@ -100,25 +92,17 @@ fn switch(routes: &Route) -> Html {
     }
 }
 
-pub struct App {}
-
-impl Component for App {
-    type Message = ();
-    type Properties = ();
-
-    fn create(_: &Context<Self>) -> Self {
-        Self {}
-    }
-
-    fn view(&self, _: &Context<Self>) -> Html {
-        html! {
-            <BrowserRouter>
-                <Switch<Route> render={Switch::render(switch)} />
-            </BrowserRouter>
-        }
+#[function_component(App)]
+pub fn app() -> Html {
+    html! {
+        <BrowserRouter>
+            <Switch<Route> render={Switch::render(switch)} />
+        </BrowserRouter>
     }
 }
 
 fn main() {
+    wasm_logger::init(wasm_logger::Config::default());
+    log::info!("started");
     yew::start_app::<App>();
 }
