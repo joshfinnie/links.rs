@@ -34,7 +34,7 @@ pub fn social_button(props: &Props) -> Html {
                         text-align: center;
                         text-transform: capitalize;
                         border-radius: .5rem;
-                        border-color: black;
+                        border-color: ${bg};
                         background-color: ${bg};
                         color: white;
                     "#,
