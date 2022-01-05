@@ -14,3 +14,8 @@ $ cargo install --locked trunk
 $ cargo install wasm-bindgen-cli
 $ trunk serve
 ```
+
+## Deployments
+
+Deployments are handled via Github Actions.
+We deploy manually to Netlify after building.
