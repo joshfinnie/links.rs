@@ -11,11 +11,14 @@ jobs:
         with:
           toolchain: stable
           target: wasm32-unknown-unknown
-      - name: Install Trunk
-        uses: actions-rs/cargo@v1
+      - name: Install trunk
+        uses: baptiste0928/cargo-install@v1
         with:
-          command: install
-          args: trunk wasm-bindgen-cli
+          crate: trunk
+      - name: Install wasm-bindgen-cli
+        uses: baptiste0928/cargo-install@v1
+        with:
+          crate: wasm-bindgen-cli
       - name: Build
         run: trunk build
       - name: Publish
