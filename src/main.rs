@@ -26,15 +26,23 @@ struct Bio {
     footer: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 struct SocialEntity {
     url: String,
+    color: Option<String>,
+    icon: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+struct Settings {
+    button_order: String,
 }
 
 #[derive(Deserialize)]
 struct Config {
     bio: Bio,
     social: HashMap<String, SocialEntity>,
+    settings: Settings,
 }
 
 impl Default for Config {
@@ -50,6 +58,7 @@ pub fn home() -> Html {
     });
 
     let conf = Config::default();
+    let button_order = conf.settings.button_order.split(",").collect::<Vec<&str>>();
 
     html! {
         <Container ..props>
@@ -62,14 +71,17 @@ pub fn home() -> Html {
                 byline={ conf.bio.byline }
             />
             {
-                conf.social.into_iter().map(|(key, s)| {
+                for button_order.iter().map(|&b| {
+                    let data = conf.social.get(&String::from(b)).unwrap();
                     html! {
                         <SocialButton
-                            channel={ key }
-                            url={ s.url }
+                            channel={ String::from(b).clone() }
+                            url={ data.url.clone() }
+                            color={ data.color.clone() }
+                            icon={ data.icon.clone() }
                         />
                     }
-                }).collect::<Html>()
+                })
             }
             <p>{ conf.bio.footer }</p>
         </Container>

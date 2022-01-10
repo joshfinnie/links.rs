@@ -5,18 +5,70 @@ use stylist::yew::styled_component;
 pub struct Props {
     pub channel: String,
     pub url: String,
+    pub color: Option<String>,
+    pub icon: Option<String>,
+}
+
+struct Channel {
+    color: String,
+    display: String,
+    icon: String,
+}
+
+fn uppercase_first_letter(s: &str) -> String {
+    let mut c = s.chars();
+    match c.next() {
+        None => String::new(),
+        Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+    }
 }
 
 #[styled_component(SocialButton)]
 pub fn social_button(props: &Props) -> Html {
+
     let ch = props.channel.to_owned();
-    let color = match &ch as &str {
-        "twitter" => "#1DA1F2",
-        "github" => "#181717",
-        "linkedin" => "#0077B5",
-        "instagram" => "#E1306C",
-        "twitch" => "#9146FF",
-        _ => "#000000",
+    let channel = match &ch as &str {
+        "twitter" => Channel {
+            color: String::from("#1DA1F2"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa fa-twitter"),
+        },
+        "github" => Channel {
+            color: String::from("#181717"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa fa-github"),
+        },
+        "linkedin" => Channel {
+            color: String::from("#0077B5"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa fa-linkedin"),
+        },
+        "twitch" => Channel {
+            color: String::from("#9146FF"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa fa-twitch"),
+        },
+        "instagram" => Channel {
+            color: String::from("#E1306C"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa fa-instagram"),
+        },
+        "email" => Channel {
+            color: String::from("#000000"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa fa-envelope"),
+        },
+        _ => Channel {
+            color: match &props.color {
+                Some(s) => String::from(s),
+                None => String::from("#000000"),
+            },
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: match &props.icon {
+                Some(s) => String::from(s),
+                None => String::from("default"),
+            },
+        }
     };
 
     html! {
@@ -32,15 +84,19 @@ pub fn social_button(props: &Props) -> Html {
                         font-size: 16px;
                         cursor: pointer;
                         text-align: center;
-                        text-transform: capitalize;
                         border-radius: .5rem;
                         border-color: ${bg};
                         background-color: ${bg};
                         color: white;
                     "#,
-                    bg = color
+                    bg = channel.color.to_owned()
                 )}>
-                    { ch }
+                    <i class={channel.icon} aria-hidden="true"></i>
+                    <span class={css!(
+                        r#"
+                            padding-left: 5px;
+                        "#,
+                    )}>{ channel.display }</span>
                 </button>
             </a>
         </div>

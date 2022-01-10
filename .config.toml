@@ -1,6 +1,6 @@
 [bio]
 name="Josh Finnie"
-avatar="https://avatars.githubusercontent.com/u/125098"
+avatar="https://www.joshfinnie.com/assets/josh2.jpg"
 avatar_alt="Josh Finnie's Avatar"
 byline="Polyglot programmer working hard on learning Rust!"
 footer="© 2022 - Josh Finnie"
@@ -16,5 +16,11 @@ url="https://instagram.com/joshfinnie"
 url="https://linkedin.com/in/joshfinnie"
 [social.twitch]
 url="https://twitch.tv/joshfinnie"
+[social.email]
+url="mailto:josh@jfin.us"
 [social.documentation]
 url="https://github.com/joshfinnie/links.rs"
+icon="far fa-file"
+
+[settings]
+button_order="twitter,github,linkedin,instagram,email,twitch,documentation"
