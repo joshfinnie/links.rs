@@ -2,10 +2,14 @@
 name="Josh Finnie"
 avatar="https://www.joshfinnie.com/assets/josh2.jpg"
 avatar_alt="Josh Finnie's Avatar"
-byline="Polyglot programmer working hard on learning Rust!"
+byline="Polyglot programmer working hard on learning Rust! | ❤ Python & Javascript"
 footer="© 2022 - Josh Finnie"
 
 [social]
+[social.web]
+url="https://www.joshfinnie.com"
+icon="fas fa-cloud"
+color="#4A148C"
 [social.twitter]
 url="https://twitter.com/joshfinnie"
 [social.github]
@@ -23,4 +27,4 @@ url="https://github.com/joshfinnie/links.rs"
 icon="far fa-file"
 
 [settings]
-button_order="twitter,github,linkedin,instagram,email,twitch,documentation"
+button_order="web,twitter,github,linkedin,instagram,email,twitch,documentation"
