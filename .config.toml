@@ -1,8 +1,9 @@
 [bio]
 name="Josh Finnie"
-avatar="https://www.joshfinnie.com/assets/josh2.jpg"
+avatar="https://www.joshfinnie.com/assets/josh5.webp"
 avatar_alt="Josh Finnie's Avatar"
-byline="Polyglot programmer working hard on learning Rust! | ❤ Python & Javascript"
+byline="""Polyglot programmer working hard on learning Rust!
+❤ Python & Javascript"""
 footer="© 2022 - Josh Finnie"
 
 [social]
@@ -20,6 +21,8 @@ url="https://instagram.com/joshfinnie"
 url="https://linkedin.com/in/joshfinnie"
 [social.twitch]
 url="https://twitch.tv/joshfinnie"
+[social.youtube]
+url="https://youtube.com/@joshfinnie"
 [social.email]
 url="mailto:josh@jfin.us"
 [social.documentation]
@@ -27,4 +30,4 @@ url="https://github.com/joshfinnie/links.rs"
 icon="far fa-file"
 
 [settings]
-button_order="web,twitter,github,linkedin,instagram,email,twitch,documentation"
+button_order="web,twitter,github,linkedin,instagram,email,twitch,youtube,documentation"

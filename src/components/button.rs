@@ -58,6 +58,11 @@ pub fn social_button(props: &Props) -> Html {
             display: String::from(uppercase_first_letter(&ch)),
             icon: String::from("fa fa-envelope"),
         },
+        "youtube" => Channel {
+            color: String::from("#ff0000"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa fa-youtube"),
+        },
         _ => Channel {
             color: match &props.color {
                 Some(s) => String::from(s),
@@ -85,7 +90,7 @@ pub fn social_button(props: &Props) -> Html {
                         cursor: pointer;
                         text-align: center;
                         border-radius: .5rem;
-                        border-color: ${bg};
+                        border: none;
                         background-color: ${bg};
                         color: white;
                     "#,

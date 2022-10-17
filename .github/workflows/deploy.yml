@@ -1,4 +1,4 @@
-name: Deploy to Netlify on commits to master
+name: Deploy to Netlify on commits to main
 on:
   push:
     branches: [main]
