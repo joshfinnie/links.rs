@@ -30,4 +30,4 @@ url="https://github.com/joshfinnie/links.rs"
 icon="far fa-file"
 
 [settings]
-button_order="web,twitter,github,linkedin,instagram,email,twitch,youtube,documentation"
+button_order="web,twitter,github,linkedin,instagram,twitch,youtube,email,documentation"
