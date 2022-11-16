@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use stylist::yew::{styled_component, Global};
+use yew::prelude::*;
 
 #[derive(PartialEq, Properties)]
 pub struct Props {
@@ -22,7 +22,7 @@ pub fn container(props: &Props) -> Html {
                         min-height: 100vh;
                         flex-direction: column;
                         color: white;
-                        background-color: #292929;
+                        background-color: #333;
                     }
                 "#
             )} />

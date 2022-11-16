@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use stylist::yew::styled_component;
+use yew::prelude::*;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
@@ -25,9 +25,13 @@ fn uppercase_first_letter(s: &str) -> String {
 
 #[styled_component(SocialButton)]
 pub fn social_button(props: &Props) -> Html {
-
     let ch = props.channel.to_owned();
     let channel = match &ch as &str {
+        "mastodon" => Channel {
+            color: String::from("#6364FF"),
+            display: String::from(uppercase_first_letter(&ch)),
+            icon: String::from("fa-brands fa-mastodon"),
+        },
         "twitter" => Channel {
             color: String::from("#1DA1F2"),
             display: String::from(uppercase_first_letter(&ch)),
@@ -36,32 +40,32 @@ pub fn social_button(props: &Props) -> Html {
         "github" => Channel {
             color: String::from("#181717"),
             display: String::from(uppercase_first_letter(&ch)),
-            icon: String::from("fa fa-github"),
+            icon: String::from("fa-brands fa-github"),
         },
         "linkedin" => Channel {
             color: String::from("#0077B5"),
             display: String::from(uppercase_first_letter(&ch)),
-            icon: String::from("fa fa-linkedin"),
+            icon: String::from("fa-brands fa-linkedin-in"),
         },
         "twitch" => Channel {
             color: String::from("#9146FF"),
             display: String::from(uppercase_first_letter(&ch)),
-            icon: String::from("fa fa-twitch"),
+            icon: String::from("fa-brands fa-twitch"),
         },
         "instagram" => Channel {
             color: String::from("#E1306C"),
             display: String::from(uppercase_first_letter(&ch)),
-            icon: String::from("fa fa-instagram"),
+            icon: String::from("fa-brands fa-instagram"),
         },
         "email" => Channel {
             color: String::from("#000000"),
             display: String::from(uppercase_first_letter(&ch)),
-            icon: String::from("fa fa-envelope"),
+            icon: String::from("fa-regular fa-envelope"),
         },
         "youtube" => Channel {
             color: String::from("#ff0000"),
             display: String::from(uppercase_first_letter(&ch)),
-            icon: String::from("fa fa-youtube"),
+            icon: String::from("fa-brands fa-youtube"),
         },
         _ => Channel {
             color: match &props.color {
@@ -73,12 +77,12 @@ pub fn social_button(props: &Props) -> Html {
                 Some(s) => String::from(s),
                 None => String::from("default"),
             },
-        }
+        },
     };
 
     html! {
         <div>
-            <a href={ props.url.to_owned() } target="_blank" class={css!("text-decoration: none;")}>
+            <a href={ props.url.to_owned() } rel="me" target="_blank" class={css!("text-decoration: none;")}>
                 <button class={css!(
                     r#"
                         margin-top: .5rem;

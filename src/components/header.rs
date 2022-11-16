@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use stylist::yew::styled_component;
+use yew::prelude::*;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {
