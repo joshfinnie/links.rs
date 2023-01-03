@@ -1,9 +1,7 @@
 use std::collections::HashMap;
 
-use log;
 use serde_derive::Deserialize;
 use toml;
-use wasm_logger;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
@@ -12,7 +10,7 @@ use crate::components::{
     avatar::Avatar,
     button::SocialButton,
     header::Header,
-    utils::{Container, FourOhFour},
+    utils::{Container, Props, FourOhFour},
 };
 
 const DATA: &str = include_str!("../.config.toml");
@@ -53,7 +51,7 @@ impl Default for Config {
 
 #[function_component(Home)]
 pub fn home() -> Html {
-    let props = yew::props!(Container::Properties {
+    let props = yew::props!(Props {
         children: Children::default(),
     });
 
@@ -68,7 +66,7 @@ pub fn home() -> Html {
             />
             <Header
                 name={ conf.bio.name }
-                byline={ conf.bio.byline }
+                byline={ markdown::to_html(&conf.bio.byline) }
             />
             {
                 for button_order.iter().map(|&b| {
@@ -97,7 +95,7 @@ enum Route {
     NotFound,
 }
 
-fn switch(routes: &Route) -> Html {
+fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => html! { <Home /> },
         Route::NotFound => html! { <FourOhFour /> },
@@ -108,13 +106,11 @@ fn switch(routes: &Route) -> Html {
 pub fn app() -> Html {
     html! {
         <BrowserRouter>
-            <Switch<Route> render={Switch::render(switch)} />
+            <Switch<Route> render={switch} />
         </BrowserRouter>
     }
 }
 
 fn main() {
-    wasm_logger::init(wasm_logger::Config::default());
-    log::info!("started");
-    yew::start_app::<App>();
+    yew::Renderer::<App>::new().render();
 }

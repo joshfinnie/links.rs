@@ -3,8 +3,9 @@ name="Josh Finnie"
 avatar="https://www.joshfinnie.com/assets/josh.webp"
 avatar_alt="Josh Finnie's Avatar"
 byline="""Polyglot programmer working hard on learning Rust!
+
 ❤ Python & Javascript"""
-footer="© 2022 - Josh Finnie"
+footer="© 2023 - Josh Finnie"
 
 [social]
 [social.web]

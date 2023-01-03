@@ -41,8 +41,8 @@ pub fn container(props: &Props) -> Html {
 }
 
 #[function_component(FourOhFour)]
-pub fn four_oh_four() -> HTML {
-    let props = yew::props!(Container::Properties {
+pub fn four_oh_four() -> Html {
+    let props = yew::props!(Props {
         children: Children::default(),
     });
 

@@ -9,6 +9,7 @@ pub struct Props {
 
 #[styled_component(Header)]
 pub fn header(props: &Props) -> Html {
+    let byline: Html = Html::from_html_unchecked(props.byline.to_owned().into());
     html! {
         <>
             <h1 class={css!(
@@ -16,7 +17,7 @@ pub fn header(props: &Props) -> Html {
                     text-align: center;
                 "#
             )}>{ props.name.to_owned() }</h1>
-            <p>{ props.byline.to_owned() }</p>
+            { byline }
         </>
     }
 }
