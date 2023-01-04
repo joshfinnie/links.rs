@@ -1,7 +1,9 @@
 use std::collections::HashMap;
 
+use log;
 use serde_derive::Deserialize;
 use toml;
+use wasm_logger;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
@@ -112,5 +114,7 @@ pub fn app() -> Html {
 }
 
 fn main() {
+    wasm_logger::init(wasm_logger::Config::default());
+    log::info!("started");
     yew::Renderer::<App>::new().render();
 }
