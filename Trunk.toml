@@ -1,0 +1,6 @@
+[clean]
+dist = "dist"
+cargo = true
+
+[tools]
+wasm_bindgen = "0.2.87"
