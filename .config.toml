@@ -1,10 +1,10 @@
 [bio]
 name="Josh Finnie"
-avatar="https://www.joshfinnie.com/_astro/josh.0be7204f_qlQU.webp"
+avatar="img/josh.jpg"
 avatar_alt="Josh Finnie's Avatar"
-byline="""Polyglot programmer working hard on learning Rust!
+byline="""Polyglot programmer working hard on learning Rust and Go!
 
-❤ Python & Javascript"""
+Always ❤  Python & Javascript"""
 footer="© 2023 - Josh Finnie"
 
 [social]
