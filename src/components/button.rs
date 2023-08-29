@@ -1,4 +1,4 @@
-use stylist::yew::styled_component;
+use stylist::yew::{styled_component, use_style};
 use yew::prelude::*;
 
 #[derive(Clone, PartialEq, Properties)]
@@ -7,11 +7,12 @@ pub struct Props {
     pub url: String,
     pub color: Option<String>,
     pub icon: Option<String>,
+    pub title: Option<String>,
 }
 
 struct Channel {
     color: String,
-    display: String,
+    title: String,
     icon: String,
 }
 
@@ -29,42 +30,42 @@ pub fn social_button(props: &Props) -> Html {
     let channel = match &ch as &str {
         "mastodon" => Channel {
             color: String::from("#6364FF"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-brands fa-mastodon"),
         },
         "twitter" => Channel {
             color: String::from("#1DA1F2"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa fa-twitter"),
         },
         "github" => Channel {
             color: String::from("#181717"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-brands fa-github"),
         },
         "linkedin" => Channel {
             color: String::from("#0077B5"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-brands fa-linkedin-in"),
         },
         "twitch" => Channel {
             color: String::from("#9146FF"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-brands fa-twitch"),
         },
         "instagram" => Channel {
             color: String::from("#E1306C"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-brands fa-instagram"),
         },
         "email" => Channel {
             color: String::from("#000000"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-regular fa-envelope"),
         },
         "youtube" => Channel {
             color: String::from("#ff0000"),
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-brands fa-youtube"),
         },
         _ => Channel {
@@ -72,7 +73,7 @@ pub fn social_button(props: &Props) -> Html {
                 Some(s) => String::from(s),
                 None => String::from("#000000"),
             },
-            display: String::from(uppercase_first_letter(&ch)),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: match &props.icon {
                 Some(s) => String::from(s),
                 None => String::from("default"),
@@ -80,33 +81,41 @@ pub fn social_button(props: &Props) -> Html {
         },
     };
 
+    let s = use_style!(r#"
+        padding-left: 1rem;
+        justify-self: start;
+        text-size: 2rem;
+    "#);
+
     html! {
         <div>
-            <a href={ props.url.to_owned() } rel="me" target="_blank" class={css!("text-decoration: none;")}>
-                <button class={css!(
-                    r#"
-                        margin-top: .5rem;
-                        margin-bottom: .5rem;
-                        display: block;
-                        width: 100%;
-                        padding: 14px 28px;
-                        font-size: 16px;
-                        cursor: pointer;
-                        text-align: center;
-                        border-radius: .5rem;
-                        border: none;
-                        background-color: ${bg};
-                        color: white;
-                    "#,
-                    bg = channel.color.to_owned()
-                )}>
-                    <i class={channel.icon} aria-hidden="true"></i>
-                    <span class={css!(
-                        r#"
-                            padding-left: 5px;
-                        "#,
-                    )}>{ channel.display }</span>
-                </button>
+            <a href={ props.url.to_owned() } rel="me" target="_blank" class={css!(
+                r#"
+                    margin-top: .5rem;
+                    margin-bottom: .5rem;
+                    width: 100%;
+                    padding: 10px 0;
+                    font-size: 16px;
+                    cursor: pointer;
+                    border-radius: 1rem;
+                    border: none;
+                    background-color: ${bg};
+                    color: white;
+                    text-decoration: none;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 2rem;
+                    &:hover {
+                        background-color: gray;
+                        color: black;
+                    }
+                "#,
+                bg = channel.color.to_owned(),
+            )}>
+                <i class={classes!("fa-fw", "fa-2x", channel.icon, s)} aria-hidden="true"></i>
+                <span>{ channel.title }</span>
             </a>
         </div>
     }

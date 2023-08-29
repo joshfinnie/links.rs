@@ -30,7 +30,7 @@ pub fn container(props: &Props) -> Html {
                 r#"
                     margin-left: auto;
                     margin-right: auto;
-                    width: 250px;
+                    width: 300px;
                     z-index: 2;
                 "#
             )}>

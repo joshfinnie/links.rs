@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use log;
 use serde_derive::Deserialize;
+use stylist::yew::styled_component;
 use toml;
 use wasm_logger;
 use yew::prelude::*;
@@ -31,6 +32,7 @@ struct SocialEntity {
     url: String,
     color: Option<String>,
     icon: Option<String>,
+    title: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -51,7 +53,7 @@ impl Default for Config {
     }
 }
 
-#[function_component(Home)]
+#[styled_component(Home)]
 pub fn home() -> Html {
     let props = yew::props!(Props {
         children: Children::default(),
@@ -79,11 +81,21 @@ pub fn home() -> Html {
                             url={ data.url.clone() }
                             color={ data.color.clone() }
                             icon={ data.icon.clone() }
+                            title={ data.title.clone() }
                         />
                     }
                 })
             }
             <p>{ conf.bio.footer }</p>
+            { html!{
+                <p>
+                    {"This was built using Links.rs. You can find the source code on "}
+                    <a class={css!("color: white;")} href="https://github.com/joshfinnie/links.rs">
+                        {"Github"}
+                    </a>
+                    {". Give it a ⭐!"}
+                </p>
+            }}
         </Container>
     }
 }
