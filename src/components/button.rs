@@ -68,6 +68,11 @@ pub fn social_button(props: &Props) -> Html {
             title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
             icon: String::from("fa-brands fa-youtube"),
         },
+        "threads" => Channel {
+            color: String::from("#1c1e21"),
+            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            icon: String::from("fa-brands fa-threads"),
+        },
         _ => Channel {
             color: match &props.color {
                 Some(s) => String::from(s),

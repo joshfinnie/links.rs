@@ -31,9 +31,12 @@ title="joshfinnie"
 [social.youtube]
 title="@joshfinnie"
 url="https://youtube.com/@joshfinnie"
+[social.threads]
+title="@joshfinnie"
+url="https://www.threads.net/@joshfinnie"
 [social.email]
 url="mailto:josh@jfin.us"
 title="josh@jfin.us"
 
 [settings]
-button_order="web,github,linkedin,mastodon,twitch,youtube,instagram,email"
+button_order="web,github,linkedin,threads,mastodon,twitch,youtube,instagram,email"
