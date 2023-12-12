@@ -3,4 +3,4 @@ dist = "dist"
 cargo = true
 
 [tools]
-wasm_bindgen = "0.2.87"
+wasm_bindgen = "0.2.89"
