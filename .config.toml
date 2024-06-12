@@ -5,7 +5,7 @@ avatar_alt="Josh Finnie's Avatar"
 byline="""Polyglot programmer working hard on learning Rust and Go!
 
 Always ❤  Python & Javascript"""
-footer="© 2023 - Josh Finnie"
+footer="© 2024 - Josh Finnie"
 
 [social]
 [social.web]
@@ -13,9 +13,6 @@ url="https://www.joshfinnie.com"
 icon="fas fa-cloud"
 color="#4A148C"
 title="joshfinnie.com"
-[social.mastodon]
-title="@joshfinnie"
-url="https://fosstodon.org/@joshfinnie"
 [social.github]
 url="https://github.com/joshfinnie"
 title="joshfinnie"
@@ -39,4 +36,4 @@ url="mailto:josh@jfin.us"
 title="josh@jfin.us"
 
 [settings]
-button_order="web,github,linkedin,threads,mastodon,twitch,instagram,email"
+button_order="web,github,linkedin,threads,twitch,instagram,email"
