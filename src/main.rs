@@ -6,14 +6,13 @@ use stylist::yew::styled_component;
 use toml;
 use wasm_logger;
 use yew::prelude::*;
-use yew_router::prelude::*;
 
 pub mod components;
 use crate::components::{
     avatar::Avatar,
     button::SocialButton,
     header::Header,
-    utils::{Container, Props, FourOhFour},
+    utils::{Container, Props},
 };
 
 const DATA: &str = include_str!("../.config.toml");
@@ -100,28 +99,10 @@ pub fn home() -> Html {
     }
 }
 
-#[derive(Clone, Routable, PartialEq)]
-enum Route {
-    #[at("/")]
-    Home,
-    #[not_found]
-    #[at("/404")]
-    NotFound,
-}
-
-fn switch(routes: Route) -> Html {
-    match routes {
-        Route::Home => html! { <Home /> },
-        Route::NotFound => html! { <FourOhFour /> },
-    }
-}
-
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
-        <BrowserRouter>
-            <Switch<Route> render={switch} />
-        </BrowserRouter>
+        <Home />
     }
 }
 

@@ -12,4 +12,3 @@ stylist = { version = "0.13", features = ["yew_integration"] }
 toml = "0.8"
 wasm-logger = "0.2"
 yew = { version = "0.21", features = ["csr"] }
-yew-router = "0.18"

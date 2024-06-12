@@ -39,19 +39,3 @@ pub fn container(props: &Props) -> Html {
         </>
     }
 }
-
-#[function_component(FourOhFour)]
-pub fn four_oh_four() -> Html {
-    let props = yew::props!(Props {
-        children: Children::default(),
-    });
-
-    html! {
-        <Container ..props>
-            <h1>
-                { "404" }
-            </h1>
-            <p>{ "Something went wrong! We could not find the page you are looking for..." }</p>
-        </Container>
-    }
-}
