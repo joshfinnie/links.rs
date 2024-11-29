@@ -1,39 +1,42 @@
 [bio]
-name="Josh Finnie"
-avatar="img/josh.jpg"
-avatar_alt="Josh Finnie's Avatar"
-byline="""Polyglot programmer working hard on learning Rust and Go!
+name = "Josh Finnie"
+avatar = "img/josh.jpg"
+avatar_alt = "Josh Finnie's Avatar"
+byline = """Polyglot programmer working hard on learning Rust and Go!
 
 Always ❤  Python & Javascript"""
-footer="© 2024 - Josh Finnie"
+footer = "© 2024 - Josh Finnie"
 
 [social]
 [social.web]
-url="https://www.joshfinnie.com"
-icon="fas fa-cloud"
-color="#4A148C"
-title="joshfinnie.com"
+url = "https://www.joshfinnie.com"
+icon = "fas fa-cloud"
+color = "#4A148C"
+title = "joshfinnie.com"
 [social.github]
-url="https://github.com/joshfinnie"
-title="joshfinnie"
+url = "https://github.com/joshfinnie"
+title = "joshfinnie"
 [social.instagram]
-url="https://instagram.com/joshfinnie"
-title="joshfinnie"
+url = "https://instagram.com/joshfinnie"
+title = "joshfinnie"
 [social.linkedin]
-url="https://linkedin.com/in/joshfinnie"
-title="joshfinnie"
+url = "https://linkedin.com/in/joshfinnie"
+title = "joshfinnie"
 [social.twitch]
-url="https://twitch.tv/joshfinnie"
-title="joshfinnie"
+url = "https://twitch.tv/joshfinnie"
+title = "joshfinnie"
 [social.youtube]
-title="@joshfinnie"
-url="https://youtube.com/@joshfinnie"
+title = "@joshfinnie"
+url = "https://youtube.com/@joshfinnie"
 [social.threads]
-title="@joshfinnie"
-url="https://www.threads.net/@joshfinnie"
+title = "@joshfinnie"
+url = "https://www.threads.net/@joshfinnie"
 [social.email]
-url="mailto:josh@jfin.us"
-title="josh@jfin.us"
+url = "mailto:josh@jfin.us"
+title = "josh@jfin.us"
+[social.bluesky]
+url = "https://bsky.app/profile/joshfinnie.dev"
+title = "@joshfinnie.dev"
 
 [settings]
-button_order="web,github,linkedin,threads,twitch,instagram,email"
+button_order = "web,github,linkedin,bluesky,instagram,threads,twitch,email"

@@ -52,8 +52,8 @@ impl Default for Config {
     }
 }
 
-#[styled_component(Home)]
-pub fn home() -> Html {
+#[styled_component]
+pub fn App() -> Html {
     let props = yew::props!(Props {
         children: Children::default(),
     });
@@ -96,13 +96,6 @@ pub fn home() -> Html {
                 </p>
             }}
         </Container>
-    }
-}
-
-#[function_component(App)]
-pub fn app() -> Html {
-    html! {
-        <Home />
     }
 }
 

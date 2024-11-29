@@ -28,49 +28,94 @@ fn uppercase_first_letter(s: &str) -> String {
 pub fn social_button(props: &Props) -> Html {
     let ch = props.channel.to_owned();
     let channel = match &ch as &str {
+        "bluesky" => Channel {
+            color: String::from("#87CEEB"),
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
+            icon: String::from("fa-brands fa-bluesky"),
+        },
         "mastodon" => Channel {
             color: String::from("#6364FF"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-brands fa-mastodon"),
         },
         "twitter" => Channel {
             color: String::from("#1DA1F2"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa fa-twitter"),
         },
         "github" => Channel {
             color: String::from("#181717"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-brands fa-github"),
         },
         "linkedin" => Channel {
             color: String::from("#0077B5"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-brands fa-linkedin-in"),
         },
         "twitch" => Channel {
             color: String::from("#9146FF"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-brands fa-twitch"),
         },
         "instagram" => Channel {
             color: String::from("#E1306C"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-brands fa-instagram"),
         },
         "email" => Channel {
             color: String::from("#000000"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-regular fa-envelope"),
         },
         "youtube" => Channel {
             color: String::from("#ff0000"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-brands fa-youtube"),
         },
         "threads" => Channel {
             color: String::from("#1c1e21"),
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: String::from("fa-brands fa-threads"),
         },
         _ => Channel {
@@ -78,7 +123,11 @@ pub fn social_button(props: &Props) -> Html {
                 Some(s) => String::from(s),
                 None => String::from("#000000"),
             },
-            title: if props.title.is_some() { props.title.clone().unwrap() } else {String::from(uppercase_first_letter(&ch))},
+            title: if props.title.is_some() {
+                props.title.clone().unwrap()
+            } else {
+                uppercase_first_letter(&ch)
+            },
             icon: match &props.icon {
                 Some(s) => String::from(s),
                 None => String::from("default"),
@@ -86,11 +135,13 @@ pub fn social_button(props: &Props) -> Html {
         },
     };
 
-    let s = use_style!(r#"
+    let s = use_style!(
+        r#"
         padding-left: 1rem;
         justify-self: start;
         text-size: 2rem;
-    "#);
+    "#
+    );
 
     html! {
         <div>
