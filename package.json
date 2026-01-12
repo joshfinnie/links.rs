@@ -1,0 +1,22 @@
+{
+  "name": "links.rs",
+  "version": "1.0.0",
+  "description": "A small linktree style application using Astro.",
+  "author": "Josh Finnie <josh@jfin.us>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "packageManager": "pnpm@10.24.0",
+  "dependencies": {
+    "@iconify-json/mingcute": "^1.2.6",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.8",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^4.1.18"
+  }
+}

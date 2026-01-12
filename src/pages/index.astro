@@ -1,0 +1,47 @@
+---
+
+import Layout from '../layouts/Layout.astro';
+import LinkCard from '../components/LinkCard.astro';
+import SocialLink from '../components/SocialLink.astro';
+import { socials, personalLinks, bio } from '../data/links';
+
+---
+
+<Layout title="Josh Finnie - Links">
+  <div class="max-w-md w-full h-[90vh] mx-4 flex flex-col overflow-hidden bg-gray-900 rounded-[2.5rem] shadow-2xl border-4 border-gray-700/50">
+    <div class="overflow-y-auto flex-1 flex flex-col">
+      <div class="relative">
+        <img src="/img/josh.jpg" alt={bio.name} class="w-full h-100 object-cover">
+        <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/90 to-transparent p-6 pb-8 text-center">
+          <h1 class="text-white text-4xl font-bold">{bio.name}</h1>
+          <p class="text-gray-300 mt-2 text-lg">{bio.description}</p>
+        </div>
+      </div>
+
+      <div class="flex justify-center gap-4 py-6">
+        {socials.map((social) => (
+          <SocialLink 
+            href={social.url} 
+            label={social.name} 
+            icon={social.icon} 
+            colorClass={social.color}
+          />
+        ))}
+      </div>
+
+      <div class="px-6 pb-6 flex flex-col gap-4">
+        {personalLinks.map((link) => (
+          <LinkCard
+            href={link.url}
+            label={link.label}
+            icon={link.icon}
+        />
+        ))}
+      </div>
+
+      <footer class="text-center pb-6 text-sm text-gray-400 mt-auto">
+        © {new Date().getFullYear()} - {bio.name}
+      </footer>
+    </div>
+  </div>
+</Layout>

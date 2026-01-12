@@ -1,0 +1,29 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  href: string;
+  label: string;
+  icon: string;
+}
+const { href, label, icon } = Astro.props;
+
+---
+
+<a
+  href={href}
+  target="_blank"
+  class="flex items-center gap-4 w-full py-3 px-4 bg-gray-800/50 rounded-2xl hover:bg-gray-700/50 transition-all duration-200 no-underline group border border-transparent hover:border-gray-600/50"
+>
+  <div class="w-12 h-12 rounded-full bg-gray-700/50 flex items-center justify-center shrink-0">
+    <Icon name={icon} class="w-8 h-8 text-white" />
+  </div>
+
+  <span class="text-white text-lg font-medium flex-1 text-left truncate tracking-tight">
+    {label}
+  </span>
+
+  <div class="shrink-0 text-gray-500 group-hover:text-white transition-colors">
+    <Icon name="mingcute:external-link-line" class="w-6 h-6" />
+  </div>
+</a>

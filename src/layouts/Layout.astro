@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Josh Finnie | Senior Engineer", 
+	description = "Senior engineer building things with code." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/img/josh.jpg" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-gray-950 font-sans antialiased text-white selection:bg-purple-500/30">
+		<main class="min-h-screen flex items-center justify-center py-8">
+      <slot />
+    </main>
+	</body>
+</html>
+
+<style is:global>
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #374151;
+		border-radius: 10px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #4b5563;
+	}
+
+	body {
+		font-family: 'Inter', sans-serif;
+	}
+</style>

@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  href: string;
+  label: string;
+  icon: string;
+  colorClass: string;
+}
+const { href, label, icon, colorClass } = Astro.props;
+---
+
+<a 
+  href={href} 
+  target="_blank" 
+  aria-label={label}
+  class={`w-16 h-16 rounded-full bg-gray-800/60 flex items-center justify-center text-gray-400 transition-all duration-300 hover:scale-110 border border-gray-700/50 shadow-lg ${colorClass}`}
+>
+  <Icon name={icon} class="w-8 h-8" />
+  <span class="sr-only">{label}</span>
+</a>
+
